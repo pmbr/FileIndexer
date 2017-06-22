@@ -24,14 +24,17 @@ public class FileReducer extends Reducer<Text, Text, Text, Text> {
 
 	public void reduce(Text word, Iterable<Text> files, Reducer<Text, Text, Text, Text>.Context context) throws IOException, InterruptedException {
 
+		//File names are added to to a list 
 		HashSet<String> uniqueFiles = new HashSet<String>();
-
 		for (Text file : files) {
 			uniqueFiles.add(file.toString());
 		}
 
+		//File names are joined on comma-separated list
 		filenames.set(new Text(StringUtils.join(uniqueFiles, ",")));
 
+		//Pair of word and name of files where it can be found are added to context
+		//This will be used by Hadoop to create output file containing index of words and files
 		context.write(word, filenames);
 
 	}
