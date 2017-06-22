@@ -9,6 +9,17 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 public class FileReducer extends Reducer<Text, Text, Text, Text> {
 
+	/*
+	 * 
+	 * Hadoop can reuse an instance of a reducer to process different data,
+	 * in this case, it can reuse a reducer to process different words.
+	 * 
+	 * For this reason, it is a good approach to have instance variables
+	 * which can be managed as 'stateless' variables and be reused across
+	 * executions of method 'map' and avoid to instanciate then for each
+	 * execution time.
+	 * 
+	 */
 	private Text filenames = new Text();
 
 	public void reduce(Text word, Iterable<Text> files, Reducer<Text, Text, Text, Text>.Context context) throws IOException, InterruptedException {

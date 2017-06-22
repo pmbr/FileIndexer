@@ -10,6 +10,17 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
 public class FileMapper extends Mapper<LongWritable, Text, Text, Text> {
 
+	/*
+	 * 
+	 * Hadoop can reuse an instance of an mapper to process different inputs,
+	 * in this case, it can reuse an mapper to process different files.
+	 * 
+	 * For this reason, it is a good approach to have instance variables
+	 * which can be managed as 'stateless' variables and be reused across
+	 * executions of method 'map' and avoid to instanciate then for each
+	 * execution time.
+	 * 
+	 */
 	private Text filename = new Text();
 	private Text word = new Text();
 

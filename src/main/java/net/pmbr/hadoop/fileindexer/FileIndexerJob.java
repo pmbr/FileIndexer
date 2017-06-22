@@ -13,8 +13,7 @@ import org.apache.hadoop.util.ToolRunner;
 public class FileIndexerJob extends Configured implements Tool {
 
 	public static void main(String[] args) throws Exception {
-		int res = ToolRunner.run(new Configuration(), new FileIndexerJob(),
-				args);
+		int res = ToolRunner.run(new Configuration(), new FileIndexerJob(), args);
 
 		System.exit(res);
 	}
@@ -31,7 +30,6 @@ public class FileIndexerJob extends Configured implements Tool {
 		Configuration config = getConf();
 		
 		Job job = new Job(config);
-	
 		
 		job.setJarByClass(FileIndexerJob.class);
 		job.setMapperClass(FileMapper.class);
