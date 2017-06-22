@@ -1,2 +1,2 @@
 # FileIndexer
-FileIndexer is a implementation of Hadoop MapReduce
+FileIndexer is an implementation of Hadoop MapReduce
